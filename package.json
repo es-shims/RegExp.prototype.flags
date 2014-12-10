@@ -1,0 +1,66 @@
+{
+	"name": "regexp.prototype.flags",
+	"version": "1.0.0",
+	"author": "Jordan Harband",
+	"description": "ES6 spec-compliant RegExp.prototype.flags shim.",
+	"license": "MIT",
+	"main": "index.js",
+	"scripts": {
+		"test": "npm run lint && node test/index.js && npm run security",
+		"coverage": "covert test/*.js",
+		"coverage-quiet": "covert test/*.js --quiet",
+		"lint": "npm run jscs",
+		"eslint": "eslint --env=node test/*.js *.js",
+		"jscs": "jscs test/*.js *.js",
+		"eccheck": "editorconfig-tools check *.js **/*.js > /dev/null",
+		"security": "nsp package"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/es-shims/RegExp.prototype.flags.git"
+	},
+	"keywords": [
+		"RegExp.prototype.flags",
+		"regex",
+		"ES6",
+		"shim",
+		"flags",
+		"regexp",
+		"RegExp#flags",
+		"polyfill"
+	],
+	"dependencies": {},
+	"devDependencies": {
+		"foreach": "~2.0.5",
+		"is": "~2.1.0",
+		"tape": "~3.0.1",
+		"indexof": "~0.0.1",
+		"covert": "1.0.0",
+		"jscs": "~1.7.3",
+		"editorconfig-tools": "~0.0.1",
+		"nsp": "~0.4.2",
+		"eslint": "~0.10.1"
+	},
+	"testling": {
+		"files": "test/index.js",
+		"browsers": [
+			"iexplore/9.0..latest",
+			"firefox/4.0..6.0",
+			"firefox/15.0..latest",
+			"firefox/nightly",
+			"chrome/4.0..10.0",
+			"chrome/20.0..latest",
+			"chrome/canary",
+			"opera/11.6..latest",
+			"opera/next",
+			"safari/5.0..latest",
+			"ipad/6.0..latest",
+			"iphone/6.0..latest",
+			"android-browser/4.2"
+		]
+	},
+	"engines": {
+		"node": ">= 0.4"
+	}
+}
+
