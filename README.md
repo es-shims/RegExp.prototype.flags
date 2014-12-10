@@ -36,15 +36,15 @@ assert(flags(new RegExp('a', 'mig')) === new RegExp('a', 'mig').flags);
 Simply clone the repo, `npm install`, and run `npm test`
 
 [package-url]: https://npmjs.com/package/regexp.prototype.flags
-[npm-version-svg]: http://vb.teelaun.ch/ljharb/RegExp.prototype.flags.svg
-[travis-svg]: https://travis-ci.org/ljharb/RegExp.prototype.flags.svg
-[travis-url]: https://travis-ci.org/ljharb/RegExp.prototype.flags
-[deps-svg]: https://david-dm.org/ljharb/RegExp.prototype.flags.svg
-[deps-url]: https://david-dm.org/ljharb/RegExp.prototype.flags
-[dev-deps-svg]: https://david-dm.org/ljharb/RegExp.prototype.flags/dev-status.svg
-[dev-deps-url]: https://david-dm.org/ljharb/RegExp.prototype.flags#info=devDependencies
-[testling-svg]: https://ci.testling.com/ljharb/RegExp.prototype.flags.png
-[testling-url]: https://ci.testling.com/ljharb/RegExp.prototype.flags
+[npm-version-svg]: http://vb.teelaun.ch/es-shims/RegExp.prototype.flags.svg
+[travis-svg]: https://travis-ci.org/es-shims/RegExp.prototype.flags.svg
+[travis-url]: https://travis-ci.org/es-shims/RegExp.prototype.flags
+[deps-svg]: https://david-dm.org/es-shims/RegExp.prototype.flags.svg
+[deps-url]: https://david-dm.org/es-shims/RegExp.prototype.flags
+[dev-deps-svg]: https://david-dm.org/es-shims/RegExp.prototype.flags/dev-status.svg
+[dev-deps-url]: https://david-dm.org/es-shims/RegExp.prototype.flags#info=devDependencies
+[testling-svg]: https://ci.testling.com/es-shims/RegExp.prototype.flags.png
+[testling-url]: https://ci.testling.com/es-shims/RegExp.prototype.flags
 [npm-badge-png]: https://nodei.co/npm/regexp.prototype.flags.png?downloads=true&stars=true
 [license-image]: http://img.shields.io/npm/l/regexp.prototype.flags.svg
 [license-url]: LICENSE
