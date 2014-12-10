@@ -31,14 +31,11 @@
 	],
 	"dependencies": {},
 	"devDependencies": {
-		"foreach": "~2.0.5",
-		"is": "~2.1.0",
-		"tape": "~3.0.1",
-		"indexof": "~0.0.1",
+		"tape": "~3.0.3",
 		"covert": "1.0.0",
-		"jscs": "~1.7.3",
+		"jscs": "~1.8.1",
 		"editorconfig-tools": "~0.0.1",
-		"nsp": "~0.4.2",
+		"nsp": "~0.5.2",
 		"eslint": "~0.10.1"
 	},
 	"testling": {
