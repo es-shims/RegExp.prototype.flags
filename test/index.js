@@ -11,6 +11,12 @@ var getRegexLiteral = function (stringRegex) {
 	} catch (e) {}
 };
 
+flags.shim();
+var descriptor = Object.getOwnPropertyDescriptor(RegExp.prototype, 'flags');
+var testGenericFlags = function (object) {
+	return descriptor.get.call(object);
+};
+
 test('works as a function', function (t) {
 	t.equal(flags(/a/g), 'g', 'flags(/a/g) !== "g"');
 	t.equal(flags(/a/gmi), 'gim', 'flags(/a/gmi) !== "gim"');
@@ -43,15 +49,13 @@ test('works as a function', function (t) {
 		var nonObjects = ['', false, true, 42, NaN, null, undefined];
 		st.plan(nonObjects.length);
 		nonObjects.forEach(function (nonObject) {
-			st.throws(function () { RegExp.prototype.flags.call(nonObject); }, TypeError);
+			st.throws(function () { flags.call(nonObject); }, TypeError);
 		});
 	});
 	t.end();
 });
 
 test('shims properly', function (t) {
-	flags.shim();
-
 	t.equal((/a/g).flags, 'g', '(/a/g).flags !== "g"');
 	t.equal((/a/gmi).flags, 'gim', '(/a/gmi).flags !== "gim"');
 	t.equal(new RegExp('a', 'gmi').flags, 'gim', 'new RegExp("a", "gmi").flags !== "gim"');
@@ -79,12 +83,30 @@ test('shims properly', function (t) {
 		st.end();
 	});
 
+	t.test('has the correct descriptor', function (st) {
+		st.equal();
+		st.equal(descriptor.configurable, false);
+		st.equal(descriptor.enumerable, false);
+		st.equal(descriptor.get instanceof Function, true);
+		st.equal(descriptor.set, undefined);
+		st.end();
+	});
+
 	t.test('throws properly', function (st) {
 		var nonObjects = ['', false, true, 42, NaN, null, undefined];
 		st.plan(nonObjects.length);
 		nonObjects.forEach(function (nonObject) {
-			st.throws(function () { RegExp.prototype.flags.call(nonObject); }, TypeError);
+			st.throws(function () { testGenericFlags(nonObject); }, TypeError);
 		});
 	});
+
+	t.test('generic flags', function (st) {
+		st.equal(testGenericFlags({}), '');
+		st.equal(testGenericFlags({ ignoreCase: true }), 'i');
+		st.equal(testGenericFlags({ global: 0, sticky: 1, unicode: 1 }), 'uy');
+		st.equal(testGenericFlags({ __proto__: { multiline: true } }), 'm');
+		st.end();
+	});
+
 	t.end();
 });
