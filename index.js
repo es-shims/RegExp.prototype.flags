@@ -1,7 +1,7 @@
 'use strict';
 
 var flagsGetter = function flags() {
-	if (this !== Object(this)) {
+	if (this != null && this !== Object(this)) {
 		throw new TypeError('RegExp.prototype.flags getter called on non-object');
 	}
 	var result = '';
@@ -43,7 +43,7 @@ flags.shim = function flagsShim() {
 	}
 	if (/a/mig.flags !== 'gim') {
 		Object.defineProperty(RegExp.prototype, 'flags', {
-			configurable: false,
+			configurable: true,
 			enumerable: false,
 			get: flagsGetter
 		});

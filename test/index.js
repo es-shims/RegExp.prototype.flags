@@ -84,10 +84,9 @@ test('shims properly', function (t) {
 	});
 
 	t.test('has the correct descriptor', function (st) {
-		st.equal();
-		st.equal(descriptor.configurable, false);
+		st.equal(descriptor.configurable, true);
 		st.equal(descriptor.enumerable, false);
-		st.equal(descriptor.get instanceof Function, true);
+		st.equal(typeof descriptor.get, 'function');
 		st.equal(descriptor.set, undefined);
 		st.end();
 	});
