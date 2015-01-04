@@ -23,13 +23,11 @@ var flagsGetter = function flags() {
 	return result;
 };
 
-var supportsDescriptors = (function () {
-	if (!Object.defineProperty) {
-		return false;
-	}
+var supportsDescriptors = Object.defineProperty && (function () {
 	try {
-		Object.defineProperty({}, 'x', {});
-		return true;
+		var obj = {};
+		Object.defineProperty(obj, 'x', { value: obj });
+		return obj.x === obj;
 	} catch (e) { /* this is IE 8. */
 		return false;
 	}
