@@ -31,12 +31,12 @@
 	],
 	"dependencies": {},
 	"devDependencies": {
-		"tape": "~3.4.0",
+		"tape": "~3.5.0",
 		"covert": "1.0.0",
-		"jscs": "~1.10.0",
+		"jscs": "~1.11.0",
 		"editorconfig-tools": "~0.0.1",
-		"nsp": "~0.5.2",
-		"eslint": "~0.12.0"
+		"nsp": "~1.0.0",
+		"eslint": "~0.14.0"
 	},
 	"testling": {
 		"files": "test/index.js",
