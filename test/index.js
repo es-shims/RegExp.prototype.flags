@@ -8,7 +8,7 @@ var getRegexLiteral = function (stringRegex) {
 		/*jshint evil: true */
 		return Function('return ' + stringRegex + ';')();
 		/*jshint evil: false */
-	} catch (e) {}
+	} catch (e) { /**/ }
 };
 
 flags.shim();
