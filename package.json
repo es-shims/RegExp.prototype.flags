@@ -9,8 +9,8 @@
 		"test": "npm run lint && node test/index.js && npm run security",
 		"coverage": "covert test/*.js",
 		"coverage-quiet": "covert test/*.js --quiet",
-		"lint": "npm run jscs",
-		"eslint": "eslint --env=node test/*.js *.js",
+		"lint": "npm run jscs && npm run eslint",
+		"eslint": "eslint test/*.js *.js",
 		"jscs": "jscs test/*.js *.js",
 		"eccheck": "editorconfig-tools check *.js **/*.js > /dev/null",
 		"security": "nsp package"
@@ -36,7 +36,7 @@
 		"jscs": "^1.13.1",
 		"editorconfig-tools": "^0.1.1",
 		"nsp": "^1.0.1",
-		"eslint": "^0.21.2"
+		"eslint": "^0.22.1"
 	},
 	"testling": {
 		"files": "test/index.js",

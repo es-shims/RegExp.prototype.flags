@@ -33,9 +33,9 @@ var supportsDescriptors = Object.defineProperty && (function () {
 	}
 }());
 
-var flags = Function.call.bind(flagsGetter);
+var flagsBound = Function.call.bind(flagsGetter);
 
-flags.shim = function flagsShim() {
+flagsBound.shim = function flagsShim() {
 	if (!supportsDescriptors) {
 		throw new TypeError('RegExp.prototype.flags requires a true ES5 environment that supports property descriptors');
 	}
@@ -46,7 +46,7 @@ flags.shim = function flagsShim() {
 			get: flagsGetter
 		});
 	}
-	return flags;
+	return flagsBound;
 };
 
-module.exports = flags;
+module.exports = flagsBound;
