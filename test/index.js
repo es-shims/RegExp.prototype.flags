@@ -23,14 +23,18 @@ test('works as a function', function (t) {
 	t.equal(flags(new RegExp('a', 'gmi')), 'gim', 'flags(new RegExp("a", "gmi")) !== "gim"');
 	t.equal(flags(/a/), '', 'flags(/a/) !== ""');
 	t.equal(flags(new RegExp('a')), '', 'flags(new RegExp("a")) !== ""');
-	if (RegExp.prototype.hasOwnProperty('sticky')) {
-		t.equal(flags(getRegexLiteral('/a/y')), 'y', 'flags(/a/y) !== "y"');
-		t.equal(flags(new RegExp('a', 'y')), 'y', 'flags(new RegExp("a", "y")) !== "y"');
-	}
-	if (RegExp.prototype.hasOwnProperty('unicode')) {
-		t.equal(flags(getRegexLiteral('/a/u')), 'u', 'flags(/a/u) !== "u"');
-		t.equal(flags(new RegExp('a', 'u')), 'u', 'flags(new RegExp("a", "u")) !== "u"');
-	}
+
+	t.test('sticky flag', { skip: !RegExp.prototype.hasOwnProperty('sticky') }, function (st) {
+		st.equal(flags(getRegexLiteral('/a/y')), 'y', 'flags(/a/y) !== "y"');
+		st.equal(flags(new RegExp('a', 'y')), 'y', 'flags(new RegExp("a", "y")) !== "y"');
+		st.end();
+	});
+
+	t.test('unicode flag', { skip: !RegExp.prototype.hasOwnProperty('unicode') }, function (st) {
+		st.equal(flags(getRegexLiteral('/a/u')), 'u', 'flags(/a/u) !== "u"');
+		st.equal(flags(new RegExp('a', 'u')), 'u', 'flags(new RegExp("a", "u")) !== "u"');
+		st.end();
+	});
 
 	t.test('sorting', function (st) {
 		st.equal(flags(/a/gim), 'gim', 'flags(/a/gim) !== "gim"');
@@ -48,27 +52,35 @@ test('works as a function', function (t) {
 	t.test('throws properly', function (st) {
 		var nonObjects = ['', false, true, 42, NaN, null, undefined];
 		st.plan(nonObjects.length);
-		nonObjects.forEach(function (nonObject) {
-			st.throws(function () { flags.call(nonObject); }, TypeError);
-		});
+		var throwsOnNonObject = function (nonObject) {
+			st.throws(Function.call.bind(nonObject), TypeError);
+		};
+		nonObjects.forEach(throwsOnNonObject);
 	});
 	t.end();
 });
 
 test('shims properly', function (t) {
-	t.equal((/a/g).flags, 'g', '(/a/g).flags !== "g"');
-	t.equal((/a/gmi).flags, 'gim', '(/a/gmi).flags !== "gim"');
-	t.equal(new RegExp('a', 'gmi').flags, 'gim', 'new RegExp("a", "gmi").flags !== "gim"');
-	t.equal((/a/).flags, '', '(/a/).flags !== ""');
-	t.equal(new RegExp('a').flags, '', 'new RegExp("a").flags !== ""');
-	if (RegExp.prototype.hasOwnProperty('sticky')) {
-		t.equal(getRegexLiteral('/a/y').flags, 'y', '(/a/y).flags !== "y"');
-		t.equal(new RegExp('a', 'y').flags, 'y', 'new RegExp("a", "y").flags !== "y"');
-	}
-	if (RegExp.prototype.hasOwnProperty('unicode')) {
-		t.equal(getRegexLiteral('/a/u').flags, 'u', '(/a/u).flags !== "u"');
-		t.equal(new RegExp('a', 'u').flags, 'u', 'new RegExp("a", "u").flags !== "u"');
-	}
+	t.test('basic examples', function (st) {
+		st.equal((/a/g).flags, 'g', '(/a/g).flags !== "g"');
+		st.equal((/a/gmi).flags, 'gim', '(/a/gmi).flags !== "gim"');
+		st.equal(new RegExp('a', 'gmi').flags, 'gim', 'new RegExp("a", "gmi").flags !== "gim"');
+		st.equal((/a/).flags, '', '(/a/).flags !== ""');
+		st.equal(new RegExp('a').flags, '', 'new RegExp("a").flags !== ""');
+		st.end();
+	});
+
+	t.test('sticky flag', { skip: !RegExp.prototype.hasOwnProperty('sticky') }, function (st) {
+		st.equal(getRegexLiteral('/a/y').flags, 'y', '(/a/y).flags !== "y"');
+		st.equal(new RegExp('a', 'y').flags, 'y', 'new RegExp("a", "y").flags !== "y"');
+		st.end();
+	});
+
+	t.test('unicode flag', { skip: !RegExp.prototype.hasOwnProperty('unicode') }, function (st) {
+		st.equal(getRegexLiteral('/a/u').flags, 'u', '(/a/u).flags !== "u"');
+		st.equal(new RegExp('a', 'u').flags, 'u', 'new RegExp("a", "u").flags !== "u"');
+		st.end();
+	});
 
 	t.test('sorting', function (st) {
 		st.equal((/a/gim).flags, 'gim', '(/a/gim).flags !== "gim"');
@@ -94,9 +106,10 @@ test('shims properly', function (t) {
 	t.test('throws properly', function (st) {
 		var nonObjects = ['', false, true, 42, NaN, null, undefined];
 		st.plan(nonObjects.length);
-		nonObjects.forEach(function (nonObject) {
-			st.throws(function () { testGenericFlags(nonObject); }, TypeError);
-		});
+		var throwsOnNonObject = function (nonObject) {
+			st.throws(testGenericFlags.bind(null, nonObject), TypeError);
+		};
+		nonObjects.forEach(throwsOnNonObject);
 	});
 
 	t.test('generic flags', function (st) {
