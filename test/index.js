@@ -6,7 +6,9 @@ var test = require('tape');
 var getRegexLiteral = function (stringRegex) {
 	try {
 		/* jshint evil: true */
+		/* eslint-disable no-new-func */
 		return Function('return ' + stringRegex + ';')();
+		/* eslint-enable no-new-func */
 		/* jshint evil: false */
 	} catch (e) { /**/ }
 };
