@@ -36,7 +36,7 @@ assert(flags(new RegExp('a', 'mig')) === new RegExp('a', 'mig').flags);
 Simply clone the repo, `npm install`, and run `npm test`
 
 [package-url]: https://npmjs.com/package/regexp.prototype.flags
-[npm-version-svg]: http://vb.teelaun.ch/es-shims/RegExp.prototype.flags.svg
+[npm-version-svg]: http://versionbadg.es/es-shims/RegExp.prototype.flags.svg
 [travis-svg]: https://travis-ci.org/es-shims/RegExp.prototype.flags.svg
 [travis-url]: https://travis-ci.org/es-shims/RegExp.prototype.flags
 [deps-svg]: https://david-dm.org/es-shims/RegExp.prototype.flags.svg
