@@ -11,7 +11,10 @@ module.exports = function getPolyfill() {
 		throw new TypeErr('RegExp.prototype.flags requires a true ES5 environment that supports property descriptors');
 	}
 	if (/a/mig.flags === 'gim') {
-		return gOPD(RegExp.prototype, 'flags').get;
+		var descriptor = gOPD(RegExp.prototype, 'flags');
+		if (descriptor && typeof descriptor.get === 'function') {
+			return descriptor.get;
+		}
 	}
 	return implementation;
 };
