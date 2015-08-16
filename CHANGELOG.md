@@ -1,7 +1,17 @@
+1.1.0 / 2015-08-16
+=================
+ * [Robustness] Make some things a bit more robust against later modification of the environment
+ * [New] Implement the [es-shim API](es-shims/api)
+ * [Refactor] Move implementation to `implementation.js`
+ * [Dev Deps] update `eslint`, `jscs`, `tape`, `nsp`, `covert`
+ * [Tests] up to `io.js` `v3.0`
+ * [Tests] use my personal shared `eslint` config
+ * [Docs] Switch from vb.teelaun.ch to versionbadg.es for the npm version badge SVG
+
 1.0.1 / 2014-12-13
 =================
-* Ensure that non-object values throw, per spec (#3)
-* Properly match spec steps, so that the flags getter is generic (#3)
+ * Ensure that non-object values throw, per spec (#3)
+ * Properly match spec steps, so that the flags getter is generic (#3)
 
 1.0.0 / 2014-12-10
 =================
