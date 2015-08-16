@@ -1,3 +1,7 @@
+1.1.1 / 2015-08-16
+=================
+ * [Fix] cover the case where there is no descriptor on the prototype
+
 1.1.0 / 2015-08-16
 =================
  * [Robustness] Make some things a bit more robust against later modification of the environment

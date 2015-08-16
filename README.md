@@ -52,4 +52,3 @@ Simply clone the repo, `npm install`, and run `npm test`
 [license-url]: LICENSE
 [downloads-image]: http://img.shields.io/npm/dm/regexp.prototype.flags.svg
 [downloads-url]: http://npm-stat.com/charts.html?package=regexp.prototype.flags
-
