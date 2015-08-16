@@ -1,27 +1,6 @@
 'use strict';
 
-var flagsGetter = function flags() {
-	if (this != null && this !== Object(this)) {
-		throw new TypeError('RegExp.prototype.flags getter called on non-object');
-	}
-	var result = '';
-	if (this.global) {
-		result += 'g';
-	}
-	if (this.ignoreCase) {
-		result += 'i';
-	}
-	if (this.multiline) {
-		result += 'm';
-	}
-	if (this.unicode) {
-		result += 'u';
-	}
-	if (this.sticky) {
-		result += 'y';
-	}
-	return result;
-};
+var implementation = require('./implementation');
 
 var supportsDescriptors = Object.defineProperty && (function () {
 	try {
@@ -33,7 +12,7 @@ var supportsDescriptors = Object.defineProperty && (function () {
 	}
 }());
 
-var flagsBound = Function.call.bind(flagsGetter);
+var flagsBound = Function.call.bind(implementation);
 
 flagsBound.shim = function flagsShim() {
 	if (!supportsDescriptors) {
@@ -43,7 +22,7 @@ flagsBound.shim = function flagsShim() {
 		Object.defineProperty(RegExp.prototype, 'flags', {
 			configurable: true,
 			enumerable: false,
-			get: flagsGetter
+			get: implementation
 		});
 	}
 	return flagsBound;
