@@ -13,6 +13,8 @@ RegExp.prototype.flags <sup>[![Version Badge][npm-version-svg]][package-url]</su
 An ES6 spec-compliant `RegExp.prototype.flags` shim. Invoke its "shim" method to shim RegExp.prototype.flags if it is unavailable.
 *Note*: `RegExp#flags` requires a true ES5 environment - specifically, one with ES5 getters.
 
+This package implements the [es-shim API](https://github.com/es-shims/api) interface. It works in an ES5-supported environment and complies with the [spec](http://www.ecma-international.org/ecma-262/6.0/#sec-get-regexp.prototype.flags).
+
 Most common usage:
 ```js
 var flags = require('regexp.prototype.flags');
