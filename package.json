@@ -39,12 +39,12 @@
 	"devDependencies": {
 		"tape": "^4.4.0",
 		"covert": "^1.1.0",
-		"jscs": "^2.9.0",
+		"jscs": "^2.10.1",
 		"editorconfig-tools": "^0.1.1",
 		"nsp": "^2.2.0",
 		"eslint": "^1.10.3",
 		"@ljharb/eslint-config": "^1.6.1",
-		"@es-shims/api": "^1.0.0"
+		"@es-shims/api": "^1.1.0"
 	},
 	"testling": {
 		"files": "test/index.js",
