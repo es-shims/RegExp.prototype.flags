@@ -3,6 +3,7 @@
 var flags = require('../');
 var test = require('tape');
 
+/* eslint-disable consistent-return */
 var getRegexLiteral = function (stringRegex) {
 	try {
 		/* jshint evil: true */
