@@ -11,6 +11,7 @@ var getRegexLiteral = function (stringRegex) {
 		/* eslint-enable no-new-func */
 		/* jshint evil: false */
 	} catch (e) { /**/ }
+	return null;
 };
 
 flags.shim();
