@@ -44,7 +44,7 @@
 		"jscs": "^3.0.1",
 		"editorconfig-tools": "^0.1.1",
 		"nsp": "^2.3.0",
-		"eslint": "^2.7.0",
+		"eslint": "^3.0.1",
 		"@ljharb/eslint-config": "^2.2.0",
 		"@es-shims/api": "^1.2.0"
 	},
