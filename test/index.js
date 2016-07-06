@@ -2,6 +2,7 @@
 
 var flags = require('../');
 var test = require('tape');
+var has = require('has');
 
 var getRegexLiteral = function (stringRegex) {
 	try {
@@ -27,13 +28,13 @@ test('works as a function', function (t) {
 	t.equal(flags(/a/), '', 'flags(/a/) !== ""');
 	t.equal(flags(new RegExp('a')), '', 'flags(new RegExp("a")) !== ""');
 
-	t.test('sticky flag', { skip: !RegExp.prototype.hasOwnProperty('sticky') }, function (st) {
+	t.test('sticky flag', { skip: !has(RegExp.prototype, 'sticky') }, function (st) {
 		st.equal(flags(getRegexLiteral('/a/y')), 'y', 'flags(/a/y) !== "y"');
 		st.equal(flags(new RegExp('a', 'y')), 'y', 'flags(new RegExp("a", "y")) !== "y"');
 		st.end();
 	});
 
-	t.test('unicode flag', { skip: !RegExp.prototype.hasOwnProperty('unicode') }, function (st) {
+	t.test('unicode flag', { skip: !has(RegExp.prototype, 'unicode') }, function (st) {
 		st.equal(flags(getRegexLiteral('/a/u')), 'u', 'flags(/a/u) !== "u"');
 		st.equal(flags(new RegExp('a', 'u')), 'u', 'flags(new RegExp("a", "u")) !== "u"');
 		st.end();
@@ -43,10 +44,10 @@ test('works as a function', function (t) {
 		st.equal(flags(/a/gim), 'gim', 'flags(/a/gim) !== "gim"');
 		st.equal(flags(/a/mig), 'gim', 'flags(/a/mig) !== "gim"');
 		st.equal(flags(/a/mgi), 'gim', 'flags(/a/mgi) !== "gim"');
-		if (RegExp.prototype.hasOwnProperty('sticky')) {
+		if (has(RegExp.prototype, 'sticky')) {
 			st.equal(flags(getRegexLiteral('/a/gyim')), 'gimy', 'flags(/a/gyim) !== "gimy"');
 		}
-		if (RegExp.prototype.hasOwnProperty('unicode')) {
+		if (has(RegExp.prototype, 'unicode')) {
 			st.equal(flags(getRegexLiteral('/a/ugmi')), 'gimu', 'flags(/a/ugmi) !== "gimu"');
 		}
 		st.end();
@@ -73,13 +74,13 @@ test('shims properly', function (t) {
 		st.end();
 	});
 
-	t.test('sticky flag', { skip: !RegExp.prototype.hasOwnProperty('sticky') }, function (st) {
+	t.test('sticky flag', { skip: !has(RegExp.prototype, 'sticky') }, function (st) {
 		st.equal(getRegexLiteral('/a/y').flags, 'y', '(/a/y).flags !== "y"');
 		st.equal(new RegExp('a', 'y').flags, 'y', 'new RegExp("a", "y").flags !== "y"');
 		st.end();
 	});
 
-	t.test('unicode flag', { skip: !RegExp.prototype.hasOwnProperty('unicode') }, function (st) {
+	t.test('unicode flag', { skip: !has(RegExp.prototype, 'unicode') }, function (st) {
 		st.equal(getRegexLiteral('/a/u').flags, 'u', '(/a/u).flags !== "u"');
 		st.equal(new RegExp('a', 'u').flags, 'u', 'new RegExp("a", "u").flags !== "u"');
 		st.end();
@@ -89,10 +90,10 @@ test('shims properly', function (t) {
 		st.equal((/a/gim).flags, 'gim', '(/a/gim).flags !== "gim"');
 		st.equal((/a/mig).flags, 'gim', '(/a/mig).flags !== "gim"');
 		st.equal((/a/mgi).flags, 'gim', '(/a/mgi).flags !== "gim"');
-		if (RegExp.prototype.hasOwnProperty('sticky')) {
+		if (has(RegExp.prototype, 'sticky')) {
 			st.equal(getRegexLiteral('/a/gyim').flags, 'gimy', '(/a/gyim).flags !== "gimy"');
 		}
-		if (RegExp.prototype.hasOwnProperty('unicode')) {
+		if (has(RegExp.prototype, 'unicode')) {
 			st.equal(getRegexLiteral('/a/ugmi').flags, 'gimu', '(/a/ugmi).flags !== "gimu"');
 		}
 		st.end();
