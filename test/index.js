@@ -57,7 +57,7 @@ test('works as a function', function (t) {
 		var nonObjects = ['', false, true, 42, NaN, null, undefined];
 		st.plan(nonObjects.length);
 		var throwsOnNonObject = function (nonObject) {
-			st.throws(Function.call.bind(nonObject), TypeError);
+			st['throws'](Function.call.bind(nonObject), TypeError);
 		};
 		nonObjects.forEach(throwsOnNonObject);
 	});
@@ -111,7 +111,7 @@ test('shims properly', function (t) {
 		var nonObjects = ['', false, true, 42, NaN, null, undefined];
 		st.plan(nonObjects.length);
 		var throwsOnNonObject = function (nonObject) {
-			st.throws(testGenericFlags.bind(null, nonObject), TypeError);
+			st['throws'](testGenericFlags.bind(null, nonObject), TypeError);
 		};
 		nonObjects.forEach(throwsOnNonObject);
 	});
