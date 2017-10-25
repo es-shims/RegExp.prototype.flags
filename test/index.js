@@ -40,6 +40,12 @@ test('works as a function', function (t) {
 		st.end();
 	});
 
+	t.test('dotAll flag', { skip: !has(RegExp.prototype, 'dotAll') }, function (st) {
+		st.equal(flags(getRegexLiteral('/a/s')), 's', 'flags(/a/s) !== "s"');
+		st.equal(flags(new RegExp('a', 's')), 's', 'flags(new RegExp("a", "s")) !== "s"');
+		st.end();
+	});
+
 	t.test('sorting', function (st) {
 		st.equal(flags(/a/gim), 'gim', 'flags(/a/gim) !== "gim"');
 		st.equal(flags(/a/mig), 'gim', 'flags(/a/mig) !== "gim"');
@@ -49,6 +55,9 @@ test('works as a function', function (t) {
 		}
 		if (has(RegExp.prototype, 'unicode')) {
 			st.equal(flags(getRegexLiteral('/a/ugmi')), 'gimu', 'flags(/a/ugmi) !== "gimu"');
+		}
+		if (has(RegExp.prototype, 'dotAll')) {
+			st.equal(flags(getRegexLiteral('/a/sgmi')), 'gims', 'flags(/a/sgmi) !== "gims"');
 		}
 		st.end();
 	});
@@ -86,6 +95,12 @@ test('shims properly', function (t) {
 		st.end();
 	});
 
+	t.test('dotAll flag', { skip: !has(RegExp.prototype, 'dotAll') }, function (st) {
+		st.equal(getRegexLiteral('/a/s').flags, 's', '(/a/s).flags !== "s"');
+		st.equal(new RegExp('a', 's').flags, 's', 'new RegExp("a", "s").flags !== "s"');
+		st.end();
+	});
+
 	t.test('sorting', function (st) {
 		st.equal((/a/gim).flags, 'gim', '(/a/gim).flags !== "gim"');
 		st.equal((/a/mig).flags, 'gim', '(/a/mig).flags !== "gim"');
@@ -95,6 +110,9 @@ test('shims properly', function (t) {
 		}
 		if (has(RegExp.prototype, 'unicode')) {
 			st.equal(getRegexLiteral('/a/ugmi').flags, 'gimu', '(/a/ugmi).flags !== "gimu"');
+		}
+		if (has(RegExp.prototype, 'dotAll')) {
+			st.equal(getRegexLiteral('/a/sgmi').flags, 'gims', '(/a/sgmi).flags !== "gims"');
 		}
 		st.end();
 	});
@@ -119,7 +137,7 @@ test('shims properly', function (t) {
 	t.test('generic flags', function (st) {
 		st.equal(testGenericFlags({}), '');
 		st.equal(testGenericFlags({ ignoreCase: true }), 'i');
-		st.equal(testGenericFlags({ global: 0, sticky: 1, unicode: 1 }), 'uy');
+		st.equal(testGenericFlags({ dotAll: 1, global: 0, sticky: 1, unicode: 1 }), 'suy');
 		st.equal(testGenericFlags({ __proto__: { multiline: true } }), 'm');
 		st.end();
 	});

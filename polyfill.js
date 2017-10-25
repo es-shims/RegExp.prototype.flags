@@ -12,7 +12,7 @@ module.exports = function getPolyfill() {
 	}
 	if (/a/mig.flags === 'gim') {
 		var descriptor = gOPD(RegExp.prototype, 'flags');
-		if (descriptor && typeof descriptor.get === 'function') {
+		if (descriptor && typeof descriptor.get === 'function' && typeof (/a/).dotAll === 'boolean') {
 			return descriptor.get;
 		}
 	}

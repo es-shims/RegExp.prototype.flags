@@ -17,6 +17,9 @@ module.exports = function flags() {
 	if (this.multiline) {
 		result += 'm';
 	}
+	if (this.dotAll) {
+		result += 's';
+	}
 	if (this.unicode) {
 		result += 'u';
 	}
