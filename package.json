@@ -12,11 +12,10 @@
 		"prepublish": "safe-publish-latest",
 		"pretest": "npm run lint",
 		"test": "npm run tests-only",
-		"posttest": "npx aud --production",
-		"tests-only": "es-shim-api --bound && node --harmony --es-staging test/index.js",
-		"coverage": "covert test/*.js",
-		"coverage-quiet": "covert test/*.js --quiet",
+		"posttest": "aud --production",
+		"tests-only": "nyc tape 'test/**/*.js'",
 		"lint": "eslint .",
+		"postlint": "es-shim-api --bound",
 		"eccheck": "eclint check *.js **/*.js > /dev/null"
 	},
 	"repository": {
@@ -47,7 +46,11 @@
 		"covert": "^1.1.1",
 		"eclint": "^2.8.1",
 		"eslint": "^7.8.1",
+		"functions-have-names": "^1.2.2",
 		"has": "^1.0.3",
+		"has-strict-mode": "^1.0.1",
+		"nyc": "^10.3.2",
+		"object-inspect": "^1.9.0",
 		"safe-publish-latest": "^1.1.4",
 		"tape": "^5.0.1"
 	},
