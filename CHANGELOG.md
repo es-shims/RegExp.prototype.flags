@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.3.1](https://github.com/es-shims/RegExp.prototype.flags/compare/v1.3.0...v1.3.1) - 2021-01-15
+
+### Commits
+
+- [Tests] run `nyc` on all tests; use `tape` runner; add full es-shims test suite [`047a1e8`](https://github.com/es-shims/RegExp.prototype.flags/commit/047a1e8ff250220254b0e9598d962a56c8ec3ffc)
+- [Tests] migrate tests to Github Actions [`e4e391f`](https://github.com/es-shims/RegExp.prototype.flags/commit/e4e391fd3e6f057172994ad0c33ca128568c0b06)
+- [meta] use `auto-changelog` for changelog [`afbcd06`](https://github.com/es-shims/RegExp.prototype.flags/commit/afbcd06402e97e975af797e2c1375e35e22e90f2)
+- [actions] add Require Allow Edits workflow [`0db5d50`](https://github.com/es-shims/RegExp.prototype.flags/commit/0db5d50cdf59e3e5529024af4f8ce05829edc06d)
+- [meta] do not publish github action workflow files [`53f2902`](https://github.com/es-shims/RegExp.prototype.flags/commit/53f29020e5a1f517e91b8cf226ed6bc97eadc090)
+- [Dev Deps] update `eslint`, `@ljharb/eslint-config`, `tape`; add `aud` [`05f2a85`](https://github.com/es-shims/RegExp.prototype.flags/commit/05f2a851869069c7911176809028be8491465f86)
+- [Dev Deps] update `eslint`, `@ljharb/eslint-config`, `aud`, `tape` [`2a197b8`](https://github.com/es-shims/RegExp.prototype.flags/commit/2a197b84916f094946c5cad56ef8e7bb7e8f12ac)
+- [Dev Deps] update `eslint`, `@ljharb/eslint-config`, `tape`; add `safe-publish-latest` [`e40bd37`](https://github.com/es-shims/RegExp.prototype.flags/commit/e40bd37de9bb756672832a6c994652965d09b9ae)
+- [Refactor] use `call-bind` instead of `es-abstract` [`e6eac90`](https://github.com/es-shims/RegExp.prototype.flags/commit/e6eac9052ebdb4bc28cb83b5d3017a4ed74fe3f1)
+- [Deps] update `es-abstract` [`f198075`](https://github.com/es-shims/RegExp.prototype.flags/commit/f198075d6fc075e0d98967af98a512742e6e7e4f)
+- [actions] switch Automatic Rebase workflow to `pull_request_target` event [`2d21727`](https://github.com/es-shims/RegExp.prototype.flags/commit/2d217275d78214b82c7f5cacca85ca2308df83f1)
+- [Deps] update `es-abstract` [`7e7ddc6`](https://github.com/es-shims/RegExp.prototype.flags/commit/7e7ddc66174256f6688a857b09c9a02bafcf4866)
+
 ## [v1.3.0](https://github.com/es-shims/RegExp.prototype.flags/compare/v1.2.0...v1.3.0) - 2019-12-14
 
 ### Commits
