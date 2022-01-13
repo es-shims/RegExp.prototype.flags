@@ -39,6 +39,12 @@ module.exports = function runTests(flags, t) {
 		st.end();
 	});
 
+	t.test('hasIndices flag', { skip: !has(RegExp.prototype, 'hasIndices') }, function (st) {
+		st.equal(flags(getRegexLiteral('/a/d')), 'd', 'flags(/a/d) !== "d"');
+		st.equal(flags(new RegExp('a', 'd')), 'd', 'flags(new RegExp("a", "d")) !== "d"');
+		st.end();
+	});
+
 	t.test('sorting', function (st) {
 		st.equal(flags(/a/gim), 'gim', 'flags(/a/gim) !== "gim"');
 		st.equal(flags(/a/mig), 'gim', 'flags(/a/mig) !== "gim"');
