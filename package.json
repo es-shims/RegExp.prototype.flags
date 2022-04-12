@@ -1,6 +1,6 @@
 {
 	"name": "regexp.prototype.flags",
-	"version": "1.4.1",
+	"version": "1.4.2",
 	"author": "Jordan Harband <ljharb@gmail.com>",
 	"funding": {
 		"url": "https://github.com/sponsors/ljharb"
