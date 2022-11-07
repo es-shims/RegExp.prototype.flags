@@ -4,7 +4,7 @@ var has = require('has');
 var inspect = require('object-inspect');
 var supportsDescriptors = require('define-properties').supportsDescriptors;
 
-var forEach = require('foreach');
+var forEach = require('for-each');
 var availableFlags = require('available-regexp-flags');
 var regexProperties = require('available-regexp-flags/properties');
 
