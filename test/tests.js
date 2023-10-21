@@ -1,6 +1,6 @@
 'use strict';
 
-var has = require('has');
+var hasOwn = require('hasown');
 var inspect = require('object-inspect');
 var supportsDescriptors = require('define-properties').supportsDescriptors;
 
@@ -38,13 +38,13 @@ module.exports = function runTests(flags, t) {
 		st.equal(flags(/a/gim), 'gim', 'flags(/a/gim) !== "gim"');
 		st.equal(flags(/a/mig), 'gim', 'flags(/a/mig) !== "gim"');
 		st.equal(flags(/a/mgi), 'gim', 'flags(/a/mgi) !== "gim"');
-		if (has(RegExp.prototype, 'sticky')) {
+		if (hasOwn(RegExp.prototype, 'sticky')) {
 			st.equal(flags(getRegexLiteral('/a/gyim')), 'gimy', 'flags(/a/gyim) !== "gimy"');
 		}
-		if (has(RegExp.prototype, 'unicode')) {
+		if (hasOwn(RegExp.prototype, 'unicode')) {
 			st.equal(flags(getRegexLiteral('/a/ugmi')), 'gimu', 'flags(/a/ugmi) !== "gimu"');
 		}
-		if (has(RegExp.prototype, 'dotAll')) {
+		if (hasOwn(RegExp.prototype, 'dotAll')) {
 			st.equal(flags(getRegexLiteral('/a/sgmi')), 'gims', 'flags(/a/sgmi) !== "gims"');
 		}
 
