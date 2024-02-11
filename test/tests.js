@@ -3,6 +3,7 @@
 var hasOwn = require('hasown');
 var inspect = require('object-inspect');
 var supportsDescriptors = require('define-properties').supportsDescriptors;
+var v = require('es-value-fixtures');
 
 var forEach = require('for-each');
 var availableFlags = require('available-regexp-flags');
@@ -19,6 +20,14 @@ var getRegexLiteral = function (stringRegex) {
 };
 
 module.exports = function runTests(flags, t) {
+	forEach(v.primitives, function (nonObject) {
+		t['throws'](
+			function () { flags(nonObject); },
+			TypeError,
+			'throws when called with a non-object receiver: ' + inspect(nonObject)
+		);
+	});
+
 	t.equal(flags(/a/g), 'g', 'flags(/a/g) !== "g"');
 	t.equal(flags(/a/gmi), 'gim', 'flags(/a/gmi) !== "gim"');
 	t.equal(flags(new RegExp('a', 'gmi')), 'gim', 'flags(new RegExp("a", "gmi")) !== "gim"');
@@ -83,15 +92,6 @@ module.exports = function runTests(flags, t) {
 		st.equal(flags(obj), sortedFlags.replace('v', ''), 'an object with every available flag: ' + sortedFlags);
 
 		st.end();
-	});
-
-	t.test('throws properly', function (st) {
-		var nonObjects = ['', false, true, 42, NaN, null, undefined];
-		st.plan(nonObjects.length);
-		var throwsOnNonObject = function (nonObject) {
-			st['throws'](flags.bind(null, nonObject), TypeError, inspect(nonObject) + ' is not an Object');
-		};
-		nonObjects.forEach(throwsOnNonObject);
 	});
 
 	t.test('getters', { skip: !supportsDescriptors }, function (st) {
