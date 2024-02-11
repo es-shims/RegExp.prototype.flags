@@ -1,9 +1,9 @@
 'use strict';
 
 var setFunctionName = require('set-function-name');
+var $TypeError = require('es-errors/type');
 
 var $Object = Object;
-var $TypeError = TypeError;
 
 module.exports = setFunctionName(function flags() {
 	if (this != null && this !== $Object(this)) {
