@@ -6,7 +6,7 @@ var $TypeError = require('es-errors/type');
 var $Object = Object;
 
 module.exports = setFunctionName(function flags() {
-	if (this != null && this !== $Object(this)) {
+	if (this == null || this !== $Object(this)) {
 		throw new $TypeError('RegExp.prototype.flags getter called on non-object');
 	}
 	var result = '';
