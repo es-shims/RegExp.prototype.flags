@@ -46,9 +46,9 @@
 		"set-function-name": "^2.0.2"
 	},
 	"devDependencies": {
-		"@es-shims/api": "^2.4.2",
-		"@ljharb/eslint-config": "^21.1.0",
-		"aud": "^2.0.4",
+		"@es-shims/api": "^2.5.0",
+		"@ljharb/eslint-config": "^21.1.1",
+		"aud": "^2.0.5",
 		"auto-changelog": "^2.4.0",
 		"available-regexp-flags": "^1.0.4",
 		"eclint": "^2.8.1",
@@ -61,9 +61,9 @@
 		"in-publish": "^2.0.1",
 		"npmignore": "^0.3.1",
 		"nyc": "^10.3.2",
-		"object-inspect": "^1.13.1",
+		"object-inspect": "^1.13.2",
 		"safe-publish-latest": "^2.0.0",
-		"tape": "^5.7.5"
+		"tape": "^5.8.1"
 	},
 	"testling": {
 		"files": "test/index.js",
