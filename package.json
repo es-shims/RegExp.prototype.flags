@@ -14,7 +14,7 @@
 		"prepublishOnly": "safe-publish-latest",
 		"pretest": "npm run lint",
 		"test": "npm run tests-only",
-		"posttest": "aud --production",
+		"posttest": "npx npm@'>=10.2' audit --production",
 		"tests-only": "nyc tape 'test/**/*.js'",
 		"prelint": "eclint check $(git ls-files | xargs find 2> /dev/null | grep -vE 'node_modules|\\.git')",
 		"lint": "eslint --ext=js,mjs .",
@@ -48,7 +48,6 @@
 	"devDependencies": {
 		"@es-shims/api": "^2.5.0",
 		"@ljharb/eslint-config": "^21.1.1",
-		"aud": "^2.0.5",
 		"auto-changelog": "^2.4.0",
 		"available-regexp-flags": "^1.0.4",
 		"eclint": "^2.8.1",
