@@ -6,7 +6,9 @@ var runTests = require('./tests');
 
 test('as a function', function (t) {
 	t.test('bad array/this value', function (st) {
+		// @ts-expect-error
 		st['throws'](function () { flags(undefined); }, TypeError, 'undefined is not an object');
+		// @ts-expect-error
 		st['throws'](function () { flags(null); }, TypeError, 'null is not an object');
 		st.end();
 	});

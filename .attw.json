@@ -1,0 +1,6 @@
+{
+	"pack": true,
+	"ignoreRules": [
+		"named-exports"
+	]
+}

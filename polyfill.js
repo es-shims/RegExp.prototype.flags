@@ -5,6 +5,7 @@ var implementation = require('./implementation');
 var supportsDescriptors = require('define-properties').supportsDescriptors;
 var $gOPD = Object.getOwnPropertyDescriptor;
 
+/** @type {import('./polyfill.d.ts')} */
 module.exports = function getPolyfill() {
 	if (supportsDescriptors && (/a/mig).flags === 'gim') {
 		var descriptor = $gOPD(RegExp.prototype, 'flags');

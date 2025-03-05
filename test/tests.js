@@ -11,17 +11,17 @@ var regexProperties = require('available-regexp-flags/properties');
 
 var sortedFlags = availableFlags.slice().sort(function (a, b) { return a.localeCompare(b); }).join('');
 
+/** @type {(stringRegex: string) => RegExp} */
 var getRegexLiteral = function (stringRegex) {
-	try {
-		// eslint-disable-next-line no-new-func
-		return Function('return ' + stringRegex + ';')();
-	} catch (e) { /**/ }
-	return null;
+	// eslint-disable-next-line no-new-func
+	return Function('return ' + stringRegex + ';')();
 };
 
+/** @type {(flags: (re: ThisParameterType<typeof import('../implementation')>) => ReturnType<import('../implementation')>, t: import('tape').Test) => void} */
 module.exports = function runTests(flags, t) {
 	forEach(v.primitives, function (nonObject) {
 		t['throws'](
+			// @ts-expect-error
 			function () { flags(nonObject); },
 			TypeError,
 			'throws when called with a non-object receiver: ' + inspect(nonObject)
@@ -80,9 +80,11 @@ module.exports = function runTests(flags, t) {
 	t.test('generic flags', function (st) {
 		st.equal(flags({}), '');
 		st.equal(flags({ ignoreCase: true }), 'i');
+		// @ts-expect-error truthy values work, but the type says "boolean"
 		st.equal(flags({ dotAll: 1, global: 0, sticky: 1, unicode: 1 }), 'suy');
 		st.equal(flags({ __proto__: { multiline: true } }), 'm');
 
+		/** @type {Extract<Parameters<flags>[0], { __proto__?: unknown }>} */
 		var obj = {};
 		forEach(availableFlags, function (flag) {
 			if (flag !== 'v') {
@@ -134,6 +136,7 @@ module.exports = function runTests(flags, t) {
 			}
 		});
 
+		// @ts-expect-error
 		flags(re);
 
 		st.equal(calls, 'dgimsuy', 'getters are called in expected order');

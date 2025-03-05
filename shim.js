@@ -8,12 +8,13 @@ var $TypeError = require('es-errors');
 var getProto = require('get-proto');
 var regex = /a/;
 
+/** @type {import('./shim.d.ts')} */
 module.exports = function shimFlags() {
-	if (!supportsDescriptors || !getProto) {
+	if (!supportsDescriptors || !getProto || !gOPD) {
 		throw new $TypeError('RegExp.prototype.flags requires a true ES5 environment that supports property descriptors');
 	}
 	var polyfill = getPolyfill();
-	var proto = getProto(regex);
+	var proto = /** @type {typeof RegExp.prototype} */ (getProto(regex));
 	var descriptor = gOPD(proto, 'flags');
 	if (!descriptor || descriptor.get !== polyfill) {
 		defineProperty(proto, 'flags', {

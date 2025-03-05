@@ -5,10 +5,11 @@ var $TypeError = require('es-errors/type');
 
 var $Object = Object;
 
-module.exports = setFunctionName(function flags() {
+module.exports = setFunctionName(/** @type {import('./implementation')} */ function flags() {
 	if (this == null || this !== $Object(this)) {
 		throw new $TypeError('RegExp.prototype.flags getter called on non-object');
 	}
+
 	var result = '';
 	if (this.hasIndices) {
 		result += 'd';
@@ -34,6 +35,7 @@ module.exports = setFunctionName(function flags() {
 	if (this.sticky) {
 		result += 'y';
 	}
-	return result;
+	// eslint-disable-next-line no-extra-parens
+	return /** @type {ReturnType<flags>} */ (result);
 }, 'get flags', true);
 
