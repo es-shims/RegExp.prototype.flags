@@ -49,7 +49,7 @@
 	},
 	"devDependencies": {
 		"@es-shims/api": "^2.5.1",
-		"@ljharb/eslint-config": "^21.1.1",
+		"@ljharb/eslint-config": "^21.2.0",
 		"auto-changelog": "^2.5.0",
 		"available-regexp-flags": "^1.0.4",
 		"eclint": "^2.8.1",
