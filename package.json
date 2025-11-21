@@ -49,7 +49,7 @@
 	},
 	"devDependencies": {
 		"@es-shims/api": "^2.5.1",
-		"@ljharb/eslint-config": "^21.2.0",
+		"@ljharb/eslint-config": "^21.4.0",
 		"auto-changelog": "^2.5.0",
 		"available-regexp-flags": "^1.0.4",
 		"eclint": "^2.8.1",
@@ -62,7 +62,7 @@
 		"has-strict-mode": "^1.1.0",
 		"hasown": "^2.0.2",
 		"in-publish": "^2.0.1",
-		"npmignore": "^0.3.1",
+		"npmignore": "^0.3.2",
 		"nyc": "^10.3.2",
 		"object-inspect": "^1.13.4",
 		"safe-publish-latest": "^2.0.0",
